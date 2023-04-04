@@ -24,7 +24,10 @@ public class UserResource {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
-    @GetMapping("/user/save")
+    //---------------------*note*--------------------
+    // here in this postman cannot be used with post mapping with postman tool so need to use
+    //get mapping with this
+    @PostMapping("/user/save")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveUser(user));
